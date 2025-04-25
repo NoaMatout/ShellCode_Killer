@@ -50,3 +50,10 @@ sudo python3 src/main.py --pid <pid_du_processus>
 ```
 
 ![image](https://github.com/user-attachments/assets/c70b4819-ab18-4744-817d-9885860807b5)
+
+## Analyse live
+
+**Surveiller un processus toutes les 5 secondes** :
+
+```bash
+sudo python3 src/main.py --pid <pid_du_processus> --live
