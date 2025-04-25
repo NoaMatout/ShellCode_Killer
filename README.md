@@ -14,3 +14,10 @@ Détecter la présence de shellcode dans un fichier binaire ou en mémoire vive 
 - Analyse dynamique de la mémoire d'un processus
 - Détection basée sur signatures connues et heuristiques (entropie)
 - CLI simple d'utilisation
+
+## Installation
+
+```bash
+git clone https://github.com/<ton-utilisateur>/ShellCode_Killer.git
+cd ShellCode_Killer
+pip install -r requirements.txt
