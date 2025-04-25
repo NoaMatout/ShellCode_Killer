@@ -49,7 +49,7 @@ shellcode_killer --help
 python3 src/main.py --file chemin/vers/le/fichier
 ```
 
-### Pour tester
+### 🔬 Pour tester
 ```bash
 python3 tests/fake_shellcode.py
 python3 src/main.py --file tests/fake_shellcode_64.bin
@@ -64,7 +64,7 @@ python3 src/main.py --file tests/fake_shellcode_32.bin
 sudo python3 src/main.py --pid <pid_du_processus>
 ```
 
-### Pour tester
+### 🔬 Pour tester
 ```bash
 python3 tests/fake_process.py
 sudo python3 src/main.py --pid <pid_du_processus>
