@@ -95,3 +95,5 @@ https://github.com/user-attachments/assets/b2d5eee2-093a-45b3-adc0-de572b7c0079
 ```bash
 sudo python3 src/main.py --scan-all
 ```
+
+![image](https://github.com/user-attachments/assets/9428bc7c-5a3f-407d-8cbe-69d0fdfa7401)
