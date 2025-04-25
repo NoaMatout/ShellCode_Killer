@@ -1,8 +1,7 @@
 import os
-import struct
-from utils import calculate_entropy
+import time
+from utils import calculate_entropy, log_detection
 
-# Signatures shellcode connues
 SIGNATURES = [
     b"/bin/sh",
     b"\x31\xc0\x50\x68",
@@ -28,16 +27,11 @@ def get_executable_memory_regions(pid: int):
         print(f"\033[91m[ERROR]\033[0m Impossible d'ouvrir {maps_path}.")
     return regions
 
-def detect_shellcode_in_process(pid: int):
-    """Analyse la mémoire d'un processus pour détecter du shellcode."""
-    print(f"[*] Analyse dynamique du PID {pid}...")
-
+def scan_once(pid: int):
+    """Scanne une fois les segments exécutables d'un processus."""
     mem_path = f"/proc/{pid}/mem"
     regions = get_executable_memory_regions(pid)
-
-    if not regions:
-        print("\033[93m[WARNING]\033[0m Aucun segment exécutable trouvé.")
-        return
+    findings = []
 
     try:
         with open(mem_path, "rb") as mem_file:
@@ -47,17 +41,40 @@ def detect_shellcode_in_process(pid: int):
                     mem_file.seek(start)
                     chunk = mem_file.read(size)
                 except (OSError, ValueError):
-                    continue  # Ignore les régions inaccessibles
+                    continue
 
-                # Recherche de signatures
+                # Signatures
                 for sig in SIGNATURES:
                     if sig in chunk:
-                        print(f"\033[91m[CRITICAL]\033[0m Shellcode détecté : Signature {sig.hex()} dans la plage {hex(start)}-{hex(end)}")
+                        msg = f"[CRITICAL] Shellcode détecté : {sig.hex()} dans {hex(start)}-{hex(end)}"
+                        print(f"\033[91m{msg}\033[0m")
+                        findings.append(msg)
+                        log_detection(pid, msg)
 
-                # Analyse d'entropie
+                # Entropie
                 entropy = calculate_entropy(chunk)
                 if entropy > 7.5:
-                    print(f"\033[93m[WARNING]\033[0m Entropie élevée ({entropy:.2f}) détectée dans {hex(start)}-{hex(end)}")
+                    msg = f"[WARNING] Entropie élevée ({entropy:.2f}) détectée dans {hex(start)}-{hex(end)}"
+                    print(f"\033[93m{msg}\033[0m")
+                    findings.append(msg)
+                    log_detection(pid, msg)
+
     except PermissionError:
         print(f"\033[91m[ERROR]\033[0m Permission refusée pour lire {mem_path}. Essayez avec sudo.")
+
+    return findings
+
+def detect_shellcode_in_process(pid: int, live_mode=False, interval=5):
+    """Détecte du shellcode dans un processus (optionnellement en mode live)."""
+    if not live_mode:
+        print(f"[*] Analyse dynamique unique du PID {pid}...")
+        scan_once(pid)
+    else:
+        print(f"[*] Surveillance continue du PID {pid} toutes les {interval}s. Appuyez sur Ctrl+C pour stopper.")
+        try:
+            while True:
+                scan_once(pid)
+                time.sleep(interval)
+        except KeyboardInterrupt:
+            print("\n\033[92m[+] Surveillance stoppée par l'utilisateur.\033[0m")
 
