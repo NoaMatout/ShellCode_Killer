@@ -97,3 +97,5 @@ sudo python3 src/main.py --scan-all
 ```
 
 ![image](https://github.com/user-attachments/assets/9428bc7c-5a3f-407d-8cbe-69d0fdfa7401)
+
+---
