@@ -29,7 +29,8 @@ pip install -r requirements.txt
 ```python3 src/main.py --file chemin/vers/le/fichier```
 
 ### Pour tester
-```python3 tests/fake_shellcode.py
+```bash
+python3 tests/fake_shellcode.py
 python3 src/main.py --file tests/fake_shellcode.bin
 ```
 
