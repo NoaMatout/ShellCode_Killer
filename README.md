@@ -52,7 +52,8 @@ python3 src/main.py --file chemin/vers/le/fichier
 ### Pour tester
 ```bash
 python3 tests/fake_shellcode.py
-python3 src/main.py --file tests/fake_shellcode.bin
+python3 src/main.py --file tests/fake_shellcode_64.bin
+python3 src/main.py --file tests/fake_shellcode_32.bin
 ```
 
 ![image](https://github.com/user-attachments/assets/47658f6a-ac31-46cf-8a97-e457c1a2693c)
