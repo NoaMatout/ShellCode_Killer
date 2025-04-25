@@ -36,7 +36,8 @@ python3 tests/fake_shellcode.py
 python3 src/main.py --file tests/fake_shellcode.bin
 ```
 
-![image](https://github.com/user-attachments/assets/0219b51d-f163-41c8-9ac8-df74b3197cf9)
+![image](https://github.com/user-attachments/assets/47658f6a-ac31-46cf-8a97-e457c1a2693c)
+
 
 ## Analyse dynamique
 ```bash
