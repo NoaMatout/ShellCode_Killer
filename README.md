@@ -26,7 +26,9 @@ pip install -r requirements.txt
 # Utilisation
 
 ## Analyse statique
-```python3 src/main.py --file chemin/vers/le/fichier```
+```bash
+python3 src/main.py --file chemin/vers/le/fichier
+```
 
 ### Pour tester
 ```bash
