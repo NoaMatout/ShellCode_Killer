@@ -32,3 +32,5 @@ python3 src/main.py --file chemin/vers/le/fichier
 python3 tests/fake.py
 
 python3 src/main.py --file tests/fake_shellcode.bin
+
+![image](https://github.com/user-attachments/assets/8d544ad4-f3d6-47bd-b642-a5887edf9943)
