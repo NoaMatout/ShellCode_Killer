@@ -57,3 +57,6 @@ sudo python3 src/main.py --pid <pid_du_processus>
 
 ```bash
 sudo python3 src/main.py --pid <pid_du_processus> --live
+```
+
+
