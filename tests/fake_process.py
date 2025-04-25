@@ -1,15 +1,41 @@
 import ctypes
-import time
 import os
+import time
 
-# Simule un shellcode en mémoire
-payload = b"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x89\xe3\xb0\x0b\xcd\x80"
+def inject_shellcode_in_memory(payload: bytes):
+    buf = ctypes.create_string_buffer(payload)
+    print(f"[*] Shellcode placé en mémoire à l'adresse : {ctypes.addressof(buf):#x}")
+    return buf
 
-# Alloue un buffer avec les droits de lecture/écriture
-buf = ctypes.create_string_buffer(payload)
+if __name__ == "__main__":
+    print(f"[*] PID du fake process : {os.getpid()}")
+    choice = input("Injecter shellcode 32 bits (1) ou 64 bits (2) ? ")
 
-print(f"[*] PID du fake process : {os.getpid()}")
+    if choice == "1":
+        payload = (
+            b"\x31\xc0\x50\x68\x2f\x2f\x73\x68"
+            b"\x68\x2f\x62\x69\x6e"
+            b"\x89\xe3\x50\x53\x89\xe1\xb0\x0b"
+            b"\xcd\x80"
+        )
+    elif choice == "2":
+        payload = (
+            b"\x48\x31\xd2"
+            b"\x48\xbb\x2f\x62\x69\x6e\x2f\x73\x68\x00"
+            b"\x53"
+            b"\x48\x89\xe7"
+            b"\x50"
+            b"\x57"
+            b"\x48\x89\xe6"
+            b"\xb0\x3b"
+            b"\x0f\x05"
+        )
+    else:
+        print("[!] Choix invalide.")
+        exit(1)
 
-# Garde le programme vivant pour pouvoir scanner
-while True:
-    time.sleep(10)
+    inject_shellcode_in_memory(payload)
+
+    while True:
+        time.sleep(10)
+
