@@ -61,7 +61,9 @@ sudo python3 src/main.py --pid <pid_du_processus>
 sudo python3 src/main.py --pid <pid_du_processus> --live
 ```
 
-https://github.com/user-attachments/assets/8c2dc17b-d60b-436b-944e-05d4fa38bef2
+
+https://github.com/user-attachments/assets/b2d5eee2-093a-45b3-adc0-de572b7c0079
+
 
 ## Analyse globale
 
