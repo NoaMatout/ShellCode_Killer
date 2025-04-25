@@ -4,24 +4,37 @@
 |░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀|
 +----------------------------------------------------------------+
 
-🛡️ Un détecteur de shellcode en Python pour l'analyse statique et dynamique sous Linux.
+# 🛡️ ShellCode_Killer
 
-# Objectif
-Détecter la présence de shellcode dans un fichier binaire ou en mémoire vive d'un processus.
+> Hunt the shellcodes. Kill the threat.
 
-# Fonctionnalités
-- Analyse statique de fichiers binaires
-- Analyse dynamique de la mémoire d'un processus
-- Détection basée sur signatures connues et heuristiques (entropie)
-- CLI simple d'utilisation
+**ShellCode_Killer** est un outil Python permettant de détecter la présence de shellcode dans :
+- des fichiers binaires (`.bin`, ELF, etc.)
+- la mémoire d’un processus Linux en cours d’exécution
 
-# Installation
+Développé dans un contexte d’exploitation de binaire, il combine une **analyse statique**, une **analyse dynamique**, et des mécanismes heuristiques (signature + entropie) pour **évaluer le risque** de code injecté.
+
+---
+
+## 📦 Fonctionnalités
+
+- 🧠 Analyse **statique** de fichiers binaires (recherche d'opcodes, chaînes typiques, entropie)
+- 👀 Analyse **dynamique** d’un processus Linux via `/proc/<pid>/mem`
+- 🔁 Mode **live** : surveillance continue d’un processus
+- 🌐 Scan global : analyse de tous les processus actifs
+- 📈 Score de dangerosité sur 100 basé sur les détections
+- 📝 Génération automatique de rapports
+- 🎨 Interface terminal colorée avec bannière ASCII
+
+---
+
+## ⚙️ Installation
+
+### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/NoaMatout/ShellCode_Killer.git
+git clone https://github.com/<ton-utilisateur>/ShellCode_Killer.git
 cd ShellCode_Killer
-pip install -r requirements.txt
-```
 
 # Utilisation
 
