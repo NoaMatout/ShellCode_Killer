@@ -61,3 +61,8 @@ sudo python3 src/main.py --pid <pid_du_processus> --live
 
 https://github.com/user-attachments/assets/8c2dc17b-d60b-436b-944e-05d4fa38bef2
 
+## Analyse globale
+
+```bash
+sudo python3 src/main.py --scan-all
+```
