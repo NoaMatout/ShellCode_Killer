@@ -42,9 +42,9 @@ shellcode_killer --help
 
 ---
 
-# Utilisation
+## 💻 Utilisation
 
-## Analyse statique
+### 🔍 Analyse statique
 ```bash
 python3 src/main.py --file chemin/vers/le/fichier
 ```
@@ -59,7 +59,7 @@ python3 src/main.py --file tests/fake_shellcode_32.bin
 ![image](https://github.com/user-attachments/assets/47658f6a-ac31-46cf-8a97-e457c1a2693c)
 
 
-## Analyse dynamique
+### 🧠 Analyse dynamique
 ```bash
 sudo python3 src/main.py --pid <pid_du_processus>
 ```
@@ -73,7 +73,7 @@ sudo python3 src/main.py --pid <pid_du_processus>
 ![image](https://github.com/user-attachments/assets/c7e18300-4065-404d-bc46-f37ec4a79540)
 
 
-## Analyse live
+### 🔁 Analyse live
 
 **Surveiller un processus toutes les 5 secondes** :
 
@@ -85,7 +85,7 @@ sudo python3 src/main.py --pid <pid_du_processus> --live
 https://github.com/user-attachments/assets/b2d5eee2-093a-45b3-adc0-de572b7c0079
 
 
-## Analyse globale
+### 🌐 Analyse globale
 
 **Analyser tous les processus** :
 
