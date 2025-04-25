@@ -59,4 +59,5 @@ sudo python3 src/main.py --pid <pid_du_processus>
 sudo python3 src/main.py --pid <pid_du_processus> --live
 ```
 
-![video](https://github.com/NoaMatout/ShellCode_Killer/blob/main/2025-04-25%2016-18-21.mkv)
+https://github.com/user-attachments/assets/8c2dc17b-d60b-436b-944e-05d4fa38bef2
+
