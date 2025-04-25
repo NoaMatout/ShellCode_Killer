@@ -35,7 +35,9 @@ Développé dans un contexte d’exploitation de binaire, il combine une **analy
 ```bash
 git clone https://github.com/<ton-utilisateur>/ShellCode_Killer.git
 cd ShellCode_Killer
-pip install -r requirements.txt
+pip install -r requirements.tx
+pip install .
+shellcode_killer --help
 ```
 
 ---
