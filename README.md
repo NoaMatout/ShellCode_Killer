@@ -21,3 +21,9 @@ Détecter la présence de shellcode dans un fichier binaire ou en mémoire vive 
 git clone https://github.com/NoaMatout/ShellCode_Killer.git
 cd ShellCode_Killer
 pip install -r requirements.txt
+```
+
+## Utilisation
+
+# Analyse static d'un fichier
+python3 src/main.py --file chemin/vers/le/fichier
