@@ -50,7 +50,8 @@ python3 tests/fake_process.py
 sudo python3 src/main.py --pid <pid_du_processus>
 ```
 
-![image](https://github.com/user-attachments/assets/c70b4819-ab18-4744-817d-9885860807b5)
+![image](https://github.com/user-attachments/assets/c7e18300-4065-404d-bc46-f37ec4a79540)
+
 
 ## Analyse live
 
