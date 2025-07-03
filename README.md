@@ -21,8 +21,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/votreusername/shellcode-killer
-cd shellcode-killer
+git clone https://github.com/NoaMatout/ShellCode_Killer
+cd ShellCode_Killer
 pip install -r requirements.txt
 ```
 
