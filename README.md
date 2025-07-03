@@ -8,7 +8,7 @@
 
 ## 🎯 Vue d'ensemble
 
-**Shellcode Killer** est outil léger de détection de shellcode pour l'analyse de sécurité. Identifie les motifs de shellcode malveillants dans la mémoire et les fichiers grâce à la correspondance de signatures, l'analyse d'entropie et la détection d'opcodes :
+**Shellcode Killer** est un outil léger de détection de shellcode pour l'analyse de sécurité. Identifie les motifs de shellcode malveillants dans la mémoire et les fichiers grâce à la correspondance de signatures, l'analyse d'entropie et la détection d'opcodes.
 
 ## Fonctionnalités
 
@@ -21,8 +21,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/votreusername/detecteur-shellcode
-cd detecteur-shellcode
+git clone https://github.com/votreusername/shellcode-killer
+cd shellcode-killer
 pip install -r requirements.txt
 ```
 
@@ -120,3 +120,19 @@ https://github.com/user-attachments/assets/26d4158a-555f-4698-a5f7-003c0b516f25
 ### 3 : POC Scan Mémoire
 
 https://github.com/user-attachments/assets/59f6e1cc-41d1-48cf-8de1-aa9f8231160b
+
+## Licence
+
+Licence MIT
+
+## Contribution
+
+1. Fork le dépôt
+2. Créez votre branche de fonctionnalité
+3. Commitez vos changements
+4. Poussez vers la branche
+5. Créez une Pull Request
+
+## Note de Sécurité
+
+Cet outil est destiné à des fins éducatives et de recherche en sécurité. Utilisez-le toujours sur des systèmes que vous possédez ou pour lesquels vous avez une autorisation explicite de test. 
