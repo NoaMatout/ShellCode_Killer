@@ -194,7 +194,7 @@ python main.py --file sample.bin --verbose
 
 ## 🧪 Exemples concrets
 
-### Exemple 1 : Shellcode Linux détecté
+### 1 : Création des différents shellcode (Shell-Storm, MetaSploit, Exploit-DB)
 ```bash
 $ python main.py --hex "31c050682f2f7368682f62696e89e3505389e1cd80"
 ```
