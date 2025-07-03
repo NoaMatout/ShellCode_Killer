@@ -8,161 +8,104 @@
 
 ## 🎯 Vue d'ensemble
 
-**Shellcode Killer** est un système de détection avancé conçu pour identifier et analyser les shellcodes malveillants dans différents formats de données. Le projet utilise une approche multi-méthodes combinant :
+**Shellcode Killer** est outil léger de détection de shellcode pour l'analyse de sécurité. Identifie les motifs de shellcode malveillants dans la mémoire et les fichiers grâce à la correspondance de signatures, l'analyse d'entropie et la détection d'opcodes :
 
-- **Analyse par signatures** : Reconnaissance de shellcodes connus
-- **Analyse entropique** : Détection de données chiffrées/encodées
-- **Analyse d'opcodes** : Identification d'instructions dangereuses
-- **Analyse heuristique** : Détection de patterns suspects
+## Fonctionnalités
 
-### 🔍 Shellcodes supportés
+- **Détection par Signature**: Identifie les motifs de shellcode connus (Linux, Windows, Meterpreter)
+- **Analyse d'Entropie**: Calcule l'entropie de Shannon pour détecter les charges utiles encodées
+- **Analyse d'Opcodes**: Détecte les instructions d'assemblage dangereuses
+- **Scanner Mémoire**: Analyse en temps réel de la mémoire des processus
+- **Analyse de Fichiers**: Analyse les fichiers suspects pour détecter les shellcodes
 
-Le système détecte efficacement :
-- **Linux x86/x64** : `/bin/sh`, `/bin/bash`, reverse shells
-- **Windows x86/x64** : `WinExec`, `CreateProcess`, reverse shells
-- **Meterpreter** : Payloads Metasploit
-- **Cobalt Strike** : Beacons et payloads
-- **Polymorphic shellcodes** : Codes auto-modifiants
-- **NOP sleds** : Séquences de glissement
+## Installation
 
-## 🏗️ Architecture technique
-
-```
-shellcode_killer/
-├── 📁 src/                          # Modules principaux
-│   ├── 🔍 detector.py              # Orchestrateur principal
-│   ├── 🎯 patterns.py              # Moteur de signatures
-│   ├── 📊 entropy.py               # Analyseur entropique
-│   ├── ⚙️ opcodes.py               # Analyseur d'opcodes
-│   └── 🛠️ utils.py                 # Fonctions utilitaires
-├── 📁 signatures/                   # Bases de connaissances
-│   ├── 📋 common_shellcodes.json   # Signatures de shellcodes
-│   └── ⚠️ dangerous_opcodes.json   # Opcodes dangereux
-├── 📁 tests/                       # Suite de tests
-│   └── 📁 test_samples/            # Échantillons de test
-├── 📁 logs/                        # Journaux d'analyse
-├── 🐍 main.py                      # Point d'entrée CLI
-├── 📄 requirements.txt             # Dépendances
-└── 📖 USAGE.md                     # Guide détaillé
-```
-
-### 🔧 Composants principaux
-
-#### 1. **ShellcodeDetector** (`src/detector.py`)
-- Orchestrateur principal du système
-- Gestion des différents formats d'entrée
-- Calcul du score de risque composite
-- Génération des rapports détaillés
-
-#### 2. **PatternDetector** (`src/patterns.py`)
-- Base de signatures de shellcodes connus
-- Recherche de patterns hexadécimaux
-- Détection de chaînes caractéristiques
-- Support des expressions régulières
-
-#### 3. **EntropyAnalyzer** (`src/entropy.py`)
-- Calcul de l'entropie de Shannon
-- Détection de données chiffrées/compressées
-- Analyse de la randomité des données
-- Seuils adaptatifs selon la taille
-
-#### 4. **OpcodeAnalyzer** (`src/opcodes.py`)
-- Reconnaissance d'instructions dangereuses
-- Analyse des syscalls système
-- Détection d'opcodes de contrôle de flux
-- Pondération selon la criticité
-
-## 🔬 Méthodes de détection
-
-### 1. **Détection par signatures** 🎯
-```python
-# Exemple de signature Linux x86
-{
-    "name": "Linux /bin/sh shellcode",
-    "description": "Exécute /bin/sh sur Linux x86",
-    "pattern": "31c050682f2f7368682f62696e89e3505389e1cd80",
-    "platform": "linux",
-    "severity": "critical"
-}
-```
-
-### 2. **Analyse entropique** 📊
-- **Formule** : `H(X) = -Σ P(xi) * log2(P(xi))`
-- **Seuil critique** : > 7.5 (sur 8.0 max)
-- **Détection** : Données chiffrées, encodées, ou compressées
-
-### 3. **Analyse d'opcodes** ⚙️
-```python
-# Opcodes dangereux détectés
-{
-    "0x80": {"name": "INT 0x80", "risk": "high"},    # Syscall Linux
-    "0x2E": {"name": "INT 0x2E", "risk": "high"},    # Syscall Windows
-    "0xEB": {"name": "JMP short", "risk": "medium"}, # Saut court
-    "0x33": {"name": "XOR reg", "risk": "medium"}    # XOR register
-}
-```
-
-### 4. **Analyse heuristique** 🧠
-- Détection de patterns polymorphes
-- Analyse de la densité d'instructions
-- Reconnaissance de NOP sleds
-- Détection de techniques d'obfuscation
-
-## 🚀 Installation
-
-### Prérequis
-- Python 3.8+
-- pip (gestionnaire de paquets Python)
-
-### Installation rapide
 ```bash
-# Cloner le projet
-git clone https://github.com/votre-username/shellcode_killer.git
-cd shellcode_killer
-
-# Installer les dépendances
+git clone https://github.com/votreusername/detecteur-shellcode
+cd detecteur-shellcode
 pip install -r requirements.txt
-
-# Vérifier l'installation
-python main.py --help
 ```
 
-### Dépendances
-```
-colorama==0.4.6    # Couleurs dans le terminal
-argparse           # Parsing des arguments CLI (built-in)
-json               # Manipulation JSON (built-in)
-logging            # Système de logs (built-in)
-base64             # Encodage/décodage base64 (built-in)
-binascii           # Conversion binaire (built-in)
-```
+## Utilisation
 
-## 💻 Utilisation
-
-### Interface en ligne de commande
+### Analyse de Base
 
 ```bash
-# Analyser un fichier binaire
-python main.py --file malware.exe
+# Analyser une chaîne hexadécimale
+python shellcode_detector.py --hex "31c050682f2f7368682f62696e89e3505389e1cd80"
 
-# Analyser du code hexadécimal
-python main.py --hex "31c050682f2f7368682f62696e89e3505389e1cd80"
+# Analyser un fichier
+python shellcode_detector.py --file fichier_suspect.bin
 
-# Analyser du code base64
-python main.py --base64 "McBQaC8vc2hoL2JpbonjUFOJ4c2A"
-
-# Scanner un dossier complet
-python main.py --scan /path/to/directory --recursive
-
-# Ajuster le seuil de détection
-python main.py --file sample.bin --threshold 0.8
-
-# Sortie en format JSON
-python main.py --hex "909090909090" --output json
-
-# Mode verbeux avec détails
-python main.py --file sample.bin --verbose
+# Sortie JSON
+python shellcode_detector.py --hex "31c050..." --output json
 ```
+
+### Analyse Mémoire
+
+```bash
+# Analyse unique
+python memory_scanner.py
+
+# Surveillance continue
+python memory_scanner.py --continuous --interval 30
+
+# Analyser un processus spécifique
+python memory_scanner.py --pid 1234
+```
+
+### Tests
+
+```bash
+python test_samples.py
+```
+
+## Exemple de Sortie
+
+```
+Score de Risque: 1.00
+Entropie: 4.85
+Taille des Données: 21 octets
+Signature Connue: Linux execve /bin/sh (Linux x86)
+Opcodes Dangereux: 8
+Statut: MALVEILLANT
+```
+
+## Méthodes de Détection
+
+- **Correspondance de Signatures**: Motifs de shellcode connus
+- **Analyse d'Entropie**: Analyse statistique du caractère aléatoire des données
+- **Détection d'Opcodes**: Instructions d'assemblage dangereuses (syscalls, sauts, XOR)
+- **Notation Heuristique**: Évaluation combinée des risques
+
+## Choix Techniques
+
+### Architecture Modulaire
+Le projet adopte une architecture séparée entre le moteur de détection (`ShellcodeDetector`) et le scanner mémoire (`MemoryScanner`). Cette approche permet une meilleure maintenabilité et facilite l'extension des fonctionnalités.
+
+### Algorithme de Scoring
+Le score de risque combine plusieurs métriques :
+- **Signatures (poids: 100%)**: Détection immédiate des shellcodes connus
+- **Entropie (poids: 40%)**: Normalisation sur 8 bits pour détecter l'encodage
+- **Opcodes (poids: 60%)**: Pondération basée sur la fréquence d'apparition
+
+### Signatures Choisies
+Les signatures intégrées couvrent les vecteurs d'attaque les plus courants :
+- Linux x86 execve: shellcode de base pour l'exécution de commandes
+- Windows MessageBox: payload de démonstration fréquemment utilisé
+- Meterpreter: framework d'exploitation post-compromise populaire
+
+### Accès Mémoire
+L'utilisation de `ctypes` et `ReadProcessMemory` permet un accès direct à la mémoire des processus sans dépendances externes lourdes. Le scan multi-adresses (0x400000, 0x10000000, 0x00010000) couvre les zones mémoire couramment utilisées.
+
+### Gestion des Erreurs
+Le système adopte une approche défensive avec gestion silencieuse des erreurs d'accès mémoire, évitant les crashes sur les processus protégés tout en maintenant la continuité du scan.
+
+## Architecture
+
+- `shellcode_detector.py`: Moteur de détection principal
+- `memory_scanner.py`: Analyse de la mémoire des processus
+- `test_samples.py`: Framework de test
 
 ## 🧪 Exemples concrets
 
