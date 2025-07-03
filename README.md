@@ -6,20 +6,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Status: Active](https://img.shields.io/badge/Status-Active-green.svg)]()
 
-## 📋 Table des matières
-
-- [Vue d'ensemble](#vue-densemble)
-- [Architecture technique](#architecture-technique)
-- [Méthodes de détection](#méthodes-de-détection)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Exemples concrets](#exemples-concrets)
-- [Résultats de tests](#résultats-de-tests)
-- [Performances](#performances)
-- [Limitations](#limitations)
-- [Roadmap](#roadmap)
-- [Contribution](#contribution)
-
 ## 🎯 Vue d'ensemble
 
 **Shellcode Killer** est un système de détection avancé conçu pour identifier et analyser les shellcodes malveillants dans différents formats de données. Le projet utilise une approche multi-méthodes combinant :
