@@ -83,6 +83,9 @@ Statut: MALVEILLANT
 ### Architecture Modulaire
 Le projet adopte une architecture séparée entre le moteur de détection (`ShellcodeDetector`) et le scanner mémoire (`MemoryScanner`). Cette approche permet une meilleure maintenabilité et facilite l'extension des fonctionnalités.
 
+### Choix du Langage
+Python a été choisi pour ce projet car c'est le langage que je maîtrise le mieux. Cette expertise permet un développement plus rapide et une meilleure gestion des aspects complexes comme l'analyse d'entropie et les accès mémoire via `ctypes`. De plus, Python offre une excellente lisibilité du code et une riche écosystème de bibliothèques pour la sécurité informatique.
+
 ### Algorithme de Scoring
 Le score de risque combine plusieurs métriques :
 - **Signatures (poids: 100%)**: Détection immédiate des shellcodes connus
