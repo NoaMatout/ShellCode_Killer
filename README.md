@@ -198,47 +198,9 @@ python main.py --file sample.bin --verbose
 
 https://github.com/user-attachments/assets/d87fc4e8-ea97-4c7f-8b3b-134c91c0034f
 
+### 2 : POC
 
-**Sortie :**
-```
-🔍 Analyse du shellcode...
-📊 Entropie: 4.23/8.0
-🎯 Signatures: 1 trouvée(s)
-⚙️ Opcodes dangereux: 3 détecté(s)
-
-⚠️ SHELLCODE DÉTECTÉ - Score: 1.00/1.00
-
-📋 Détails de l'analyse:
-├── Signature détectée: Linux /bin/sh shellcode
-├── Entropie: 4.23 (données structurées)
-├── Opcodes: XOR EAX, PUSH, INT 0x80
-└── Taille: 25 octets
-
-🚨 Recommandation: Code malveillant confirmé - QUARANTAINE
-```
-
-### Exemple 2 : Données normales (non détectées)
-```bash
-$ python main.py --hex "41414141424242424343434344444444"
-```
-
-**Sortie :**
-```
-🔍 Analyse du shellcode...
-📊 Entropie: 2.00/8.0
-🎯 Signatures: 0 trouvée(s)
-⚙️ Opcodes dangereux: 0 détecté(s)
-
-✅ PROPRE - Score: 0.15/1.00
-
-📋 Détails de l'analyse:
-├── Aucune signature détectée
-├── Entropie: 2.00 (données répétitives)
-├── Aucun opcode dangereux
-└── Taille: 16 octets
-
-✅ Recommandation: Données apparemment légitimes
-```
+https://github.com/user-attachments/assets/26d4158a-555f-4698-a5f7-003c0b516f25
 
 ### Exemple 3 : Scan de dossier
 ```bash
