@@ -195,9 +195,9 @@ python main.py --file sample.bin --verbose
 ## 🧪 Exemples concrets
 
 ### 1 : Création des différents shellcode (Shell-Storm, MetaSploit, Exploit-DB)
-```bash
-$ python main.py --hex "31c050682f2f7368682f62696e89e3505389e1cd80"
-```
+
+https://github.com/user-attachments/assets/d87fc4e8-ea97-4c7f-8b3b-134c91c0034f
+
 
 **Sortie :**
 ```
